@@ -1,3 +1,5 @@
+<image src="http://i.imgur.com/TxOLM6f.png"></image>
+
 # formula -> by Metaforce007
 collection of algorithms
 
