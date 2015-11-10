@@ -1,3 +1,9 @@
+/*
+ *  purpose
+ *  usage
+ *  example
+ */
+
 # ifndef    FORMULA_CHOP__GUARD
 # define    FORMULA_CHOP__GUARD
 
