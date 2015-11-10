@@ -1,7 +1,6 @@
 <image src="http://i.imgur.com/TxOLM6f.png"></image>
 
-# formula<br/>
-Metaforce007<br/>
+# formula &nbsp;&nbsp; Metaforce007<br/>
 
 collection of algorithms
 
