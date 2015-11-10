@@ -1,6 +1,8 @@
 <image src="http://i.imgur.com/TxOLM6f.png"></image>
 
-# formula -> by Metaforce007
+# formula<br/>
+Metaforce007<br/>
+
 collection of algorithms
 
 <br/>-generic algorithms
