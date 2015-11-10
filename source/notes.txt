@@ -11,3 +11,4 @@ valid independently (remove all custom includes and see if something bugs)
 search for bugs
 try all possible inputs
 add more functionality to each formula
+think of more formulas to implement / create
