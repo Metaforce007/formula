@@ -13,8 +13,123 @@
 namespace fml {
 
     namespace mnl {
-    
+
+        ////////////////
+        // CLASSIFIED //
+        ////////////////
+
+        template<typename __I, typename __T1, typename __T2>
+        void trade(__I BI, __I EI, const __T1 &T1, const __T2 &T2);
+
+        template<typename __I, typename __T>
+        int purge(__I BI, __I EI, const __T T);
+
+        template<typename __I, typename __F, typename __T1, typename __T2>
+        void trade(__I BI, __I EI, const __F &F, const __T1 &T1, const __T2 &T2);
+
+        template<typename __I, typename __F, typename __T>
+        int purge(__I BI, __I EI, const __F &F, const __T T);
+
+        template<typename __C, typename __T>
+        int purge(__C &C, const __T T) {
+            return fml::mnl::purge(C.begin(), C.end(), T);
+        };
+
+        template<typename __C, typename __T, typename... ___T>
+        int purge(__C &C, const __T T, const ___T... _T) {
+            return fml::mnl::purge(C.begin(), C.end(), T) + fml::mnl::purge(C, _T...);
+        };
+
+        template<typename __C, typename __F, typename __T>
+        int purge(__C &C, const __F &F, const __T T) {
+            return fml::mnl::purge(C.begin(), C.end(), F, T);
+        };
+
+        template<typename __C, typename __F, typename __T, typename... ___T>
+        int purge(__C &C, const __F &F, const __T T, const ___T... _T) {
+            return fml::mnl::purge(C.begin(), C.end(), F, T) + fml::mnl::purge(C, F, _T...);
+        };
+
+        template<typename __C, typename __T>
+        int purge(__C &C, const __T T1, const __T T2) {
+            return fml::mnl::purge(C.begin(), C.end(), T1) + fml::mnl::purge(C.begin(), C.end(), T2);
+        };
+
+        template<typename __C, typename __T, typename... ___T>
+        int purge(__C &C, const __T T1, const __T T2, const ___T... _T) {
+            return fml::mnl::purge(C.begin(), C.end(), T1) + fml::mnl::purge(C.begin(), C.end(), T2) +
+                   fml::mnl::purge(C, _T...);   //
+        };
+
+        template<typename __T, typename __C>
+        int purge(const __T T, __C &C) {
+            return fml::mnl::purge(C.begin(), C.end(), T);
+        };
+
+        template<typename __T, typename __C, typename... ___C>
+        int purge(const __T T, __C &C, ___C &... _C) {
+            return fml::mnl::purge(C.begin(), C.end(), T) + fml::mnl::purge<__T, __C>(T, _C...);
+        };
+
+        /*template <typename __C> void __pop__(__C &C, int N) {
+            while (N--) C.pop_back();
+        };*/
+
+        /* C++ < 11
+        # include <string>
+        void __pop__(std::string &C, int N) {
+            std::string nC = ""; int rt = C.size() - N;
+            for (int i = 0; i < rt; i++) nC += C[i];
+            C = nC;
+        };*/
+
     };
+
+    template<typename __C, typename __T>
+    void purge(__C &C, const __T T) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T));
+    };
+
+    template<typename __C, typename __T, typename... ___T>
+    void purge(__C &C, const __T T, const ___T... _T) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T) + fml::mnl::purge(C, _T...));
+    };
+
+    template<typename __C, typename __F, typename __T>
+    void purge(__C &C, const __F &F, const __T T) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), F, T));
+    };
+
+    template<typename __C, typename __F, typename __T, typename... ___T>
+    void purge(__C &C, const __F &F, const __T T, const ___T... _T) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), F, T) + fml::mnl::purge(C, F, _T...));
+    };
+
+    template<typename __C, typename __T>
+    void purge(__C &C, const __T T1, const __T T2) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T1) + fml::mnl::purge(C.begin(), C.end(), T2));
+    };
+
+    template<typename __C, typename __T, typename... ___T>
+    void purge(__C &C, const __T T1, const __T T2, const ___T... _T) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T1) + fml::mnl::purge(C.begin(), C.end(), T2) +
+                             fml::mnl::purge<__C, __T>(C, _T...));
+    };
+
+    template<typename __T, typename __C>
+    void purge(const __T T, __C &C) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T));
+    };
+
+    template<typename __T, typename __C, typename... ___C>
+    void purge(const __T T, __C &C, ___C &... _C) {
+        fml::mnl::__pop__(C, fml::mnl::purge(C.begin(), C.end(), T));
+        fml::purge<__T, __C>(T, _C...);
+    };
+
+    // template <typename __T, typename __F, typename __C> void purge(const __T T, const __F &F, __C &C);
+
+    // template <typename __T, typename __F, typename __C, typename... ___C> void purge(const __T T, const __F &F, __C &C, ___C&... _C);
 
 };
 
