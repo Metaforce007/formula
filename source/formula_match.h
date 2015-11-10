@@ -4,7 +4,7 @@
  *  example
  */
  
- # ifndef    FORMULA_MATCH__GUARD
+# ifndef    FORMULA_MATCH__GUARD
 # define    FORMULA_MATCH__GUARD
 
 namespace fml {
