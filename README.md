@@ -1,2 +1,14 @@
-# formula
-collection of generic algorithms
+# formula -> by Metaforce007
+collection of algorithms
+
+<br/>-generic algorithms
+<br/>-containers manipulation
+<br/>-strings manipulation
+<br/>-metatemplates
+
+<br/><br/>
+
+if you've found a bug or a better implementation of an algorithm,<br/>
+please contact me with the bug / improved implementation<br/>
+
+every help is appreciated
