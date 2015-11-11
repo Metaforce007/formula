@@ -46,6 +46,16 @@ namespace fml {
         return fml::mnl::count(C.begin(), C.end(), F, T) + fml::count(C, F, _T...);
     };
 
+	template<typename __C, typename __T>
+	int count(const __C &C, const __T &T1, const __T &T2) {
+		return fml::mnl::count(C.begin(), C.end(), T1) + fml::mnl::count(C.begin(), C.end(), T2);
+	};
+	
+	template<typename __C, typename __T, typename... ___T>
+	int count(const __C &C, const __T  &T1, const __T &T2, const ___T&... _T) {
+		return fml::mnl::count(C.begin(), C.end(), T1) + fml::mnl::count(C.begin(), C.end(), T2) + fml::count(C, _T...);
+	};
+
     int count(const std::string &data, const std::string &sub) {
         if (sub.size() == 1) return fml::mnl::count(data.begin(), data.end(), sub[0]);
         int cnt = 0;
